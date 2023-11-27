@@ -11,12 +11,15 @@ public class AddClient {
         // int a = sc.nextInt();
         // System.out.println("Enter second parameter");
         // int b = sc.nextInt();
-        int[] a = {1,2,4,3,5,8,7,9};
+	int a[][] = { {1,2,3}, {4,5,6}, {7,8,9}}, b[][] = { {1,2,3} , {4,5,6} , {7,8,9} };
+	
         try {
             AddRem remobj = (AddRem) Naming.lookup("rmi://" + host + "/AddRem");
-            int[] res = remobj.addNum(a);
-            for(int num : res){
-                System.out.println(num + " ");
+            int[][] res = remobj.addNum(a, b);
+            for(int[] num : res){
+                for(int n : num){
+			System.out.println(n + " ");
+		}
             }
         } catch (RemoteException re) {
             re.printStackTrace();
